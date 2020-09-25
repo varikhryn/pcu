@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="Ru">
+
+<title>Выберите организацию</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<style>
+    .section-all-brand {
+        width: 100% !important;
+        max-width: 1920px;
+        min-width: 320px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-between;
+        height: 100vh !important;
+        /* background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_citroen.png') center center no-repeat; */
+        background-size: cover !important;
+        position: relative;
+    }
+
+    .section-all-brand_bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover !important;
+        display: none;
+        z-index: -1;
+    }
+
+    .section-all-brand_bg:first-of-type {
+        display: flex;
+    }
+
+    .brand-item {
+        width: 25%;
+        border-right: 1px solid rgb(255, 255, 255);
+        background-color: rgba(41, 46, 64, 0.949);
+        transition: all 1s ease-in;
+        padding: calc(30px + 20 * (100vw / 1920));
+    }
+
+    .brand-item:hover {
+        background-color: rgba(41, 46, 64, 0.8);
+        transition: all 1s ease-in;
+    }
+
+    .brand-item:last-of-type {
+        border-right: none;
+    }
+
+
+    .brand-item__wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand_img {
+        width: 204px;
+        height: 204px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        /* margin-bottom: 102px; */
+        margin-bottom: calc(70px + 32 * (100vw / 1920));
+        position: relative;
+    }
+
+    .brand_img img {
+        position: absolute;
+    }
+
+    .brand-item:hover .brand_img::after {
+        content: '';
+        position: absolute;
+        left: calc(50%);
+        bottom: -55px;
+        width: 1px;
+        height: 77px;
+        background-color: rgb(255, 255, 255);
+        -webkit-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+        -o-animation-delay: 1s;
+        animation-delay: 1s;
+        -moz-animation: border__height .5s ease-in;
+        -o-animation: border__height .5s ease-in;
+        -webkit-animation: border__height .5s ease-in;
+        animation: border__height .5s ease-in;
+    }
+
+    .brand-item h2 {
+        /* margin-bottom: 50px; */
+        margin-bottom: calc(30px + 20 * (100vw / 1920));
+        font-family: 'Roboto', sans-serif;
+        color: rgb(255, 255, 255);
+        text-transform: uppercase;
+        line-height: 1.2;
+        font-weight: 400;
+        font-size: 24px;
+        font-size: calc(16px + 8 * (100vw / 1920));
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .brand-item a {
+        visibility: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        /* font-size: 24px; */
+        font-size: calc(16px + 8 * (100vw / 1920));
+        /* color: #1e2336; */
+        text-transform: uppercase;
+        line-height: 1.2;
+        /* padding: 15px 100px; */
+        padding: 15px calc(40px + 60 * (100vw / 1920));
+        /* background-color: rgb(255, 255, 255); */
+        position: relative;
+        text-decoration: none;
+        opacity: 0;
+        transition: all .5s ease-in;
+        border: 1px solid rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
+        background-color: transparent;
+        position: relative;
+        z-index: 99;
+    }
+
+    .brand-item a:hover {
+        color: #1e2336;
+        transition: all .5s ease-in;
+    }
+
+    .brand-item a:hover::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(255, 255, 255);
+        transition: all .5s ease-in;
+        -moz-animation: border__height__all .5s ease-in;
+        -o-animation: border__height__all .5s ease-in;
+        -webkit-animation: border__height__all .5s ease-in;
+        animation: border__height__all .5s ease-in;
+        z-index: -1;
+    }
+
+    .brand-item:hover a {
+        visibility: visible;
+        opacity: 1;
+        transition: all .5s ease-in;
+    }
+
+    .brand-item svg {
+        transform: rotate(90deg);
+        fill: transparent;
+    }
+
+    .brand-item svg circle {
+        /* stroke-width: 1px; */
+        transition: stroke-dashoffset 1s;
+    }
+
+    .brand-item:hover svg circle {
+        stroke: rgb(255, 255, 255);
+        stroke-width: 1px;
+        stroke-dasharray: 643;
+        /* stroke-dashoffset: 50; */
+        -moz-animation: offset 1s forwards;
+        -o-animation: offset 1s forwards;
+        -webkit-animation: offset 1s forwards;
+        animation: offset 1s forwards;
+    }
+
+    @keyframes offset {
+        from {
+            stroke-dashoffset: 643;
+        }
+
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @-moz-keyframes border__height {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 73px;
+        }
+    }
+
+    @-ms-keyframes border__height {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 73px;
+        }
+    }
+
+    @-o-keyframes border__height {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 73px;
+        }
+    }
+
+    @-webkit-keyframes border__height {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 73px;
+        }
+    }
+
+    @keyframes border__height {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 73px;
+        }
+    }
+
+    @-moz-keyframes border__height__all {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 100%;
+        }
+    }
+
+    @-ms-keyframes border__height__all {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 100%;
+        }
+    }
+
+    @-o-keyframes border__height__all {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 100%;
+        }
+    }
+
+    @-webkit-keyframes border__height__all {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 100%;
+        }
+    }
+
+    @keyframes border__height__all {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 100%;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .section-all-brand {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .brand-item {
+            padding: 0;
+            width: 50%;
+        }
+
+        .brand_img {
+            margin-bottom: 20px;
+        }
+
+        .brand-item__wrapper {
+            background-color: rgba(41, 46, 64, 0.949);
+            padding: 30px 20px;
+        }
+
+        .section-all-brand_bg {
+            display: none;
+        }
+
+        .brand-item-1 {
+            /* height: 100%; */
+            background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_citroen.png') center center no-repeat;
+            background-size: cover;
+        }
+
+        .brand-item-2 {
+            /* height: 100%; */
+            background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_peugeot.png') center center no-repeat;
+            background-size: cover;
+        }
+
+        .brand-item-3 {
+            /* height: 100%; */
+            background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_opel.jpg') center center no-repeat;
+            background-size: cover;
+            border-top: 1px solid rgb(255, 255, 255);
+        }
+
+        .brand-item-4 {
+            /* height: 100%; */
+            background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_ds.jpg') center center no-repeat;
+            background-size: cover;
+            border-top: 1px solid rgb(255, 255, 255);
+        }
+
+        .brand-item svg circle {
+            stroke: rgb(255, 255, 255);
+            stroke-width: 1px;
+            stroke-dasharray: 643;
+            /* stroke-dashoffset: 50; */
+            -moz-animation: none;
+            -o-animation: none;
+            -webkit-animation: none;
+            animation: none;
+        }
+
+        .brand-item:hover svg circle {
+            stroke: rgb(255, 255, 255);
+            stroke-width: 1px;
+            stroke-dasharray: 643;
+            /* stroke-dashoffset: 50; */
+            -moz-animation: none;
+            -o-animation: none;
+            -webkit-animation: none;
+            animation: none;
+        }
+
+        .brand-item a:hover::after,
+        .brand-item a:hover,
+        .brand-item:hover .brand_img::after {
+            display: none;
+        }
+
+        .brand-item a {
+
+            color: #1e2336;
+            visibility: visible;
+            opacity: 1;
+            transition: all .5s ease-in;
+            background-color: rgb(255, 255, 255);
+        }
+
+        @media screen and (max-width: 768px) {
+            .brand-item {
+                width: 100%;
+            }
+
+            .brand-item {
+                border-right: none;
+                border-top: none;
+                border-bottom: 1px solid rgb(255, 255, 255);
+            }
+        }
+</style>
+</head>
+
+<body>
+
+    <div class="section-all-brand">
+        <div class="section-all-brand_bg"
+            style="background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_citroen.png') center center no-repeat;"
+            data-brand='citroen'></div>
+        <div class="section-all-brand_bg"
+            style="background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_peugeot.png') center center no-repeat;"
+            data-brand='peugeot'></div>
+        <div class="section-all-brand_bg"
+            style="background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_opel.jpg') center center no-repeat;"
+            data-brand='opel'></div>
+        <div class="section-all-brand_bg"
+            style="background: url('https://pcu.socmedia.com.ua/assets/images/main_bg_ds.jpg') center center no-repeat;"
+            data-brand='ds'></div>
+
+        <!-- citroen -->
+        <div class="brand-item brand-item-1" data-brand='citroen'>
+            <div class="brand-item__wrapper">
+
+                <div class=" brand_img">
+                    <figure class="chart" data-percent="100">
+                        <svg height="204" width="204">
+                            <circle cx="102" cy="102" r="100" />
+                        </svg>
+                    </figure>
+                    <img src="https://pcu.socmedia.com.ua/assets/images/new_logo_citroen.png" width="95" height="86"
+                        alt="citroen">
+                </div>
+
+                <h2>
+                    Citroën
+                </h2>
+
+                <a href="#">
+                    Вход
+                </a>
+            </div>
+        </div>
+
+        <!-- peugeot -->
+        <div class="brand-item brand-item-2" data-brand='peugeot'>
+            <div class="brand-item__wrapper">
+
+                <div class=" brand_img">
+                    <figure class="chart" data-percent="100">
+                        <svg height="204" width="204">
+                            <circle cx="102" cy="102" r="100" />
+                        </svg>
+                    </figure>
+                    <img src="https://pcu.socmedia.com.ua/assets/images/new_logo_peugeot.png" width="90" height="94"
+                        alt="citroen">
+                </div>
+
+                <h2>
+                    PEUGEOT
+                </h2>
+
+                <a href="#">
+                    Вход
+                </a>
+            </div>
+        </div>
+
+        <!-- opel-->
+        <div class="brand-item brand-item-3" data-brand='opel'>
+            <div class="brand-item__wrapper">
+
+                <div class=" brand_img">
+                    <figure class="chart" data-percent="100">
+                        <svg height="204" width="204">
+                            <circle cx="102" cy="102" r="100" />
+                        </svg>
+                    </figure>
+                    <img src="https://pcu.socmedia.com.ua/assets/images/new_logo_opel.png" width="133" height="106"
+                        alt="citroen">
+                </div>
+
+                <h2>
+                    Opel
+                </h2>
+
+                <a href="#">
+                    Вход
+                </a>
+            </div>
+        </div>
+
+        <!-- ds-->
+        <div class="brand-item brand-item-4" data-brand='ds'>
+            <div class="brand-item__wrapper">
+
+                <div class=" brand_img">
+                    <figure class="chart" data-percent="100">
+                        <svg height="204" width="204">
+                            <circle cx="102" cy="102" r="100" />
+                        </svg>
+                    </figure>
+                    <img src="https://pcu.socmedia.com.ua/assets/images/new_logo_ds.png" width="118" height="144"
+                        alt="citroen">
+                </div>
+
+                <h2>
+                    DS Automobiles
+                </h2>
+
+                <a href="#">
+                    Вход
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (window.innerWidth > 1024) {
+            let allBrand = document.querySelectorAll('.brand-item');
+            for (let item of allBrand) {
+                item.onmouseover = function () {
+
+                    let allImg = document.querySelectorAll('.section-all-brand_bg');
+
+                    for (let el of allImg) {
+                        el.style.display = `none`;
+                        if (el.getAttribute('data-brand') == this.getAttribute('data-brand')) {
+                            el.style.display = `flex`;
+                        }
+                    }
+
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
